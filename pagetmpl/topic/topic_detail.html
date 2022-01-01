@@ -12,5 +12,22 @@
   <div class="card-body">
     {{ topic.content|linebreaks }}
   </div>
+  {% if user.is_authenticated %}
+  <div class="card-footer">
+    <a href="{% url 'topic_reply' topic.id %}" class="btn btn-primary">回覆討論</a>
+  </div>
+  {% endif %}
 </div>
+<hr/>
+<ul class="list-group">
+  {% for reply in reply_list %}
+  <li class="list-group-item d-md-flex justify-content-between">
+    <div class="ml-2">{{ reply.content|linebreaks }}</div>
+    <small class="text-muted">
+      <i class="fas fa-user"></i> {{ reply.author }}
+      <i class="fas fa-clock"></i> {{ reply.created|date:"Y/m/d H:i" }}
+    </small>
+  </li>
+  {% endfor %}
+</ul>
 {% endblock %}
