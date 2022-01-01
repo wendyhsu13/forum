@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %} 
+<div class="card">
+  <div class="card-header d-md-flex justify-content-between">
+    <div class="h3">{{ topic.subject }}</div>
+    <div class="text-muted">
+      <small><i class="fas fa-user"></i> {{ topic.author }}</small>
+      <small><i class="fas fa-clock"></i> {{ topic.created|date:"Y/m/d H:i" }}</small>
+    </div>
+  </div>
+  <div class="card-body">
+    {{ topic.content|linebreaks }}
+  </div>
+</div>
+{% endblock %}
